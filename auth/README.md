@@ -93,7 +93,7 @@ curl https://kubernetes/api/v1/namespaces/default/pods --cacert /var/run/secrets
 ```
 
 ## Checking users privileges
-To check if given `verb` can be performed on a given `resource` by any user or service account `kubectl auth can-i --as <principal>` can be used. Example:
+To check if given `verb` can be performed on a given `resource` by any user or service account `kubectl auth can-i --as <principal>` can be used (its translates into HTTP header `Impersonate-User:`). Example:
 ```
 kubectl auth can-i list pods --as system:serviceaccount:default:nginx
 kubectl auth can-i list pods --as testuser
