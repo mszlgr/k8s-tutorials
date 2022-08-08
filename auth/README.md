@@ -91,3 +91,10 @@ curl https://kubernetes/api/v1/namespaces/default/services --cacert /var/run/sec
 
 curl https://kubernetes/api/v1/namespaces/default/pods --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt --header "Authorization: Bearer $TOKEN"
 ```
+
+## Checking users privlages
+To check current user / any user or service account `kubectl auth can-i` can be used. Example:
+```
+kubectl auth can-i list pods --as system:serviceaccount:default:nginx
+kubectl auth can-i list pods --as testuser
+```
