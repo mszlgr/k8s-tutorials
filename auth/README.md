@@ -98,3 +98,6 @@ To check if given `verb` can be performed on a given `resource` by any user or s
 kubectl auth can-i list pods --as system:serviceaccount:default:nginx
 kubectl auth can-i list pods --as testuser
 ```
+
+## Open questions
+Q: Pods is binded to ServiceAccount in pods yaml - if I am able to create pods I am able to select any SA I want - this is a bit problematic from security point of view, right?
