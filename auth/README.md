@@ -96,8 +96,15 @@ curl https://kubernetes/api/v1/namespaces/default/pods --cacert /var/run/secrets
 
 ```
 k create sa alpine
-k create role apline-role  --verb=get --verb=list --resource=pods
-k create rolebinding apline-rb --serviceaccount default:alpine --role=apline-role
+k create role alpine-role  --verb=get --verb=list --resource=pods
+k create rolebinding apline-rb --serviceaccount default:alpine --role=alpine-role
+```
+
+## ClusterRole vs Role
+Role can access `/api/v1/namespaces/default/pods`, not `/api/v1/pods`. Need to create cluster role and cluster role binding to make cross namespace calls:
+```
+k create clusterrole alpine-role  --verb="*" --verb="*" --resource="*"
+k create clusterrolebinding apline-rb --serviceaccount default:alpine --clusterrole=alpine-role
 ```
 
 ## Checking users privileges
